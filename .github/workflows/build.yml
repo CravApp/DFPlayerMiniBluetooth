@@ -4,11 +4,10 @@
 name: Build and Release Firmware
 
 on:
-  # This workflow runs when you push a tag that starts with "v" 
-  # (e.g., v1.0.0, v1.2, v2.0-beta)
+
   push:
     branches:
-      - main
+      - 'main'
 
 jobs:
   build-and-release:
@@ -42,8 +41,8 @@ jobs:
 
       # 5. Install any libraries you need
       # (Uncomment and modify this section if your sketch has dependencies)
-       - name: Install Libraries
-         run: |
+      - name: Install Libraries
+        run: |
            arduino-cli lib install "DFRobotDFPlayerMini"
       #     arduino-cli lib install "WiFi"
       #     arduino-cli lib install "ArduinoJson"
