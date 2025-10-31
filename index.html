@@ -18,39 +18,19 @@
     <h1 class="text-3xl font-bold text-gray-900 mb-3">DFPlayer Project Flasher</h1>
     <p class="text-gray-600 mb-6">Connect your ESP32 and click the button to flash the latest firmware.</p>
 
-    <!-- This is the ESP Web Tools button -->
-    <esp-web-install-button class="w-full"></esp-web-install-button>
+    <!-- 
+      This is the ESP Web Tools button.
+      We now point its 'manifest' attribute directly to our new json file.
+    -->
+    <esp-web-install-button class="w-full" manifest="manifest.json"></esp-web-install-button>
   </div>
 
-  <!-- Import the ESP Web Tools library -->
+  <!-- 
+    Import the ESP Web Tools library.
+    We no longer need the second script block, as the config is in the .json file.
+  -->
   <script type="module" src="https://unpkg.com/esp-web-tools@9/dist/web/install-button.js?module"></script>
 
-  <script type="module">
-    const button = document.querySelector("esp-web-install-button");
-    
-    // --- IMPORTANT ---
-    // This is the base URL for your "latest" release downloads.
-    // Replace <YourUsername> and <YourRepo>
-    const REPO_URL = "https://github.com/CravApp/DFPlayerMiniBluetooth/releases/latest/download/";
-
-    // This is the CORS proxy to bypass download errors
-    const PROXY_URL = "https://ghproxy.com/";
-
-    // This tells the button what files to flash and where
-    button.manifest = {
-      name: "DFPlayer Bluetooth Project",
-      builds: [
-        {
-          chipFamily: "ESP32", // Or "ESP32-S3", "ESP32-C3", etc.
-          parts: [
-            // We now add the PROXY_URL in front of the REPO_URL
-            { path: PROXY_URL + REPO_URL + "DFPlayerMiniBluetooth.ino.bootloader.bin", offset: 0x1000 },
-            { path: PROXY_URL + REPO_URL + "DFPlayerMiniBluetooth.ino.partitions.bin", offset: 0x8000 },
-            { path: PROXY_URL + REPO_URL + "DFPlayerMiniBluetooth.ino.bin", offset: 0x10000 },
-          ],
-        },
-      ],
-    };
-  </script>
 </body>
 </html>
+
