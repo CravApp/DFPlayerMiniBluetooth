@@ -1,0 +1,22 @@
+{
+  "name": "DFPlayer Bluetooth Project",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        {
+          "path": "https://ghproxy.com/https://github.com/CravApp/DFPlayerMiniBluetooth/releases/latest/download/DFPlayerMiniBluetooth.ino.bootloader.bin",
+          "offset": 4096
+        },
+        {
+          "path": "https://ghproxy.com/https://github.com/CravApp/DFPlayerMiniBluetooth/releases/latest/download/DFPlayerMiniBluetooth.ino.partitions.bin",
+          "offset": 32768
+        },
+        {
+          "path": "https://ghproxy.com/https://github.com/CravApp/DFPlayerMiniBluetooth/releases/latest/download/DFPlayerMiniBluetooth.ino.bin",
+          "offset": 65536
+        }
+      ]
+    }
+  ]
+}
