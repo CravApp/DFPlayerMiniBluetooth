@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DFPlayer Bluetooth Flasher</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+  <div class="max-w-md w-full bg-white rounded-xl shadow-2xl p-8 text-center">
+    <h1 class="text-3xl font-bold text-gray-900 mb-3">DFPlayer Project Flasher</h1>
+    <p class="text-gray-600 mb-6">Connect your ESP32 and click the button to flash the latest firmware.</p>
+
+    <!-- This is the ESP Web Tools button -->
+    <esp-web-install-button class="w-full"></esp-web-install-button>
+  </div>
+
+  <!-- Import the ESP Web Tools library -->
+  <script type="module" src="https://unpkg.com/esp-web-tools@9/dist/web/install-button.js?module"></script>
+
+  <script type="module">
+    const button = document.querySelector("esp-web-install-button");
+    
+    // --- IMPORTANT ---
+    // This is the base URL for your "latest" release downloads.
+    // Replace <YourUsername> and <YourRepo>
+    const REPO_URL = "https://github.com/CravApp/DFPlayerMiniBluetooth/releases/download/latest/";
+
+    // This tells the button what files to flash and where
+    button.manifest = {
+      name: "DFPlayer Bluetooth Project",
+      builds: [
+        {
+          chipFamily: "ESP32", // Or "ESP32-S3", "ESP32-C3", etc.
+          parts: [
+            { path: REPO_URL + "DFPlayerMiniBluetooth.ino.bootloader.bin", offset: 0x1000 },
+            { path: REPO_URL + "DFPlayerMiniBluetooth.ino.partitions.bin", offset: 0x8000 },
+            { path: REPO_URL + "DFPlayerMiniBluetooth.ino.bin", offset: 0x10000 },
+          ],
+        },
+      ],
+    };
+  </script>
+</body>
+</html>
