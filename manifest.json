@@ -1,16 +1,15 @@
 {
-    "name": "DFPlayerMiniBluetooth",
-    "version": "latest",
-    "new_install_prompt_erase": true,
-    "builds": [
+  "name": "DFPlayer Bluetooth Project",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
         {
-            "chipFamily": "ESP32",
-            "parts": [
-                {
-                    "path": "https://api.allorigins.win/raw?url=https://github.com/CravApp/DFPlayerMiniBluetooth/releases/download/latest/DFPlayerMiniBluetooth.ino.merged.bin",
-                    "offset": 0
-                }
-            ]
+          "path": " DFPlayerMiniBluetooth.ino.merged.bin",
+          "offset": 0
         }
-    ]
+      ]
+    }
+  ]
 }
+
